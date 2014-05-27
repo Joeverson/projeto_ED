@@ -4,7 +4,7 @@
 typedef char tipo_carro; // cria um tipo de variavel chamado carro onde ficara uma string
 
 typedef struct veiculo_h{ // esse struct é para os veiculos que viram na horizontal
-	tipo_carro car[30]; // criando um vetor de char(string) do tipo tpo_carro
+	tipo_carro *car; // criando um vetor de char(string) do tipo tpo_carro
 	struct veiculo_h* next; // ponteiro que aponta para frente
 	struct veiculo_h* prev; // pnteiro que apnta traz
 }via_h;
@@ -16,12 +16,13 @@ void criar(pista_h *c){ // inicializando a lista duplamente encadeada
 	*c = NULL;
 }
 
-int inserir_puro(pista_h *c, tipo_carro veiculo){
-	pista_h novo;
+int inserir_puro(pista_h *c, tipo_carro *veiculo){
 	
-	novo = (pista_h) malloc(sizeof(via_h)); // rezervando espaço na memoria para a nova estrutura
+	pista_h novo = (pista_h) malloc(sizeof(via_h)); // rezervando espaço na memoria para a nova estrutura
+	
 	if(novo == NULL) return 0;
-	novo->car[30] = veiculo;
+	
+	novo->car = *veiculo;
 	novo->prev = NULL;
 	novo->next = NULL;
 	*c = novo;
