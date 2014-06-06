@@ -36,3 +36,8 @@ void view(pista_h c){ // visualizar a lista
 		c = c->next;
 	}
 }
+void main(){
+
+	criar(&via_h);
+	view(via_h);
+}
